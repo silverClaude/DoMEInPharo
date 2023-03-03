@@ -1,5 +1,8 @@
+"
+just for testing
+"
 Class {
-	#name : #Test,
+	#name : #'Chenxu_test',
 	#superclass : #Object,
 	#category : #DoMEInterface
 }
