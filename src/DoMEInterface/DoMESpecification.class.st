@@ -3,10 +3,20 @@ Class {
 	#superclass : #SpPresenter,
 	#instVars : [
 		'scrollablePresenter',
-		'list'
+		'list',
+		'actionBar'
 	],
 	#category : #DoMEInterface
 }
+
+{ #category : #adding }
+DoMESpecification >> addActionBar [
+	"comment stating purpose of instance-side method"
+	"scope: class-variables  &  instance-variables"	
+
+	self initializeActionBar.
+	^actionBar
+]
 
 { #category : #adding }
 DoMESpecification >> addFieldTo: aLayout [ 
@@ -19,6 +29,7 @@ DoMESpecification >> addFieldTo: aLayout [
 		fill: false
 		padding: 5.
 	aLayout add: self addList.
+	aLayout add: self addActionBar .
 
 ]
 
@@ -39,12 +50,34 @@ DoMESpecification >> defaultLayout [
 ]
 
 { #category : #initialization }
+DoMESpecification >> initializeActionBar [
+	"comment stating purpose of instance-side method"
+	"scope: class-variables  &  instance-variables"	
+	|selectedIndex|
+	actionBar := self newActionBar
+		add: (self newButton
+			label: 'OK'; 
+			icon: (self iconNamed: #smallOk);
+			help: 'OK.';
+			action: [ "UIManager default defer: [ self inform: 'New canvas' ];"
+				DoMELayout new open. ];
+			yourself);
+		add: (self newButton
+			label: 'Cancel'; 
+			icon: (self iconNamed: #smallCancel);
+			help: 'Cancel.';
+			action: [ UIManager default defer: [ self inform: 'Cancel' ] ];
+			yourself);
+		yourself.
+]
+
+{ #category : #initialization }
 DoMESpecification >> initializeList [ 
 
 	list := self newList.
 
 	list 
-		items: #('1' '2').
+		items: #('BPMN Diagram (BPMNGraph)' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' ).
 
 ]
 
@@ -62,6 +95,7 @@ DoMESpecification >> initializePresenters [
 	The idea is to fill the entire vertical space so that we need 
 	to scroll up and down to see all the presenters."
 	self addFieldTo: largeLayout.
+	
 
 	"To use a scroll layout, we need to embed our own layout into an intermediate presenter."
 	scrollablePresenter := SpPresenter new.
