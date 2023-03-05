@@ -4,21 +4,21 @@ Class {
 	#category : #DoMEInterface
 }
 
-{ #category : #'as yet unclassified' }
-Menu >> editButton [
+{ #category : #adding }
+Menu >> addEditButton [
 	"comment stating purpose of instance-side method"
 	"scope: class-variables  &  instance-variables"	
 			
 	|button|		
 	button := self newButton
 		label: 'edit';
-		contextMenu: self editSubMenu;
+		contextMenu: self addEditSubMenu;
 		yourself.
 	^button 
 ]
 
-{ #category : #'as yet unclassified' }
-Menu >> editSubMenu [
+{ #category : #adding }
+Menu >> addEditSubMenu [
 	"comment stating purpose of instance-side method"
 	"scope: class-variables  &  instance-variables"	
 	^ self newMenu
@@ -76,20 +76,20 @@ Menu >> editSubMenu [
 		yourself
 ]
 
-{ #category : #'as yet unclassified' }
-Menu >> fileButton [
+{ #category : #adding }
+Menu >> addFileButton [
 	"comment stating purpose of instance-side method"
 	"scope: class-variables  &  instance-variables"	
 	|button|		
 	button := self newButton
 		label: 'file';
-		contextMenu: self fileSubMenu;
+		contextMenu: self addFileSubMenu;
 		yourself.
 	^button 
 ]
 
-{ #category : #'as yet unclassified' }
-Menu >> fileSubMenu [
+{ #category : #adding }
+Menu >> addFileSubMenu [
 	"comment stating purpose of instance-side method"
 	"scope: class-variables  &  instance-variables"	
 	^ self newMenu
@@ -141,7 +141,7 @@ Menu >> fileSubMenu [
 		yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #testing }
 Menu >> topMenuTest [
 	"comment stating purpose of instance-side method"
 	"scope: class-variables  &  instance-variables"	
@@ -151,6 +151,6 @@ Menu >> topMenuTest [
    presenter application: SpApplication new.
    presenter layout: SpPanedLayout newTopToBottom.
    presenter open.
-   presenter layout add: self fileButton .
-   presenter layout add: self editButton .
+   presenter layout add: self addFileButton .
+   presenter layout add: self addEditButton .
 ]
