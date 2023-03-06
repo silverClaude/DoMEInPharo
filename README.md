@@ -1,14 +1,32 @@
 # DoME In Pharo
 
-Paste the code below in playground then do it:
+**Paste the following code in playground and do it.**
+
+To test the DoMESpecification class:
+
+```smalltalk
+ds := DoMESpecification new.
+
+ds open.
+```
 
 
 
-sb := DoMESpecification new.
+To test the DoMELayout class:
 
-sb open.
+```
+lo := DoMELayout new.
 
-Please do the following code to test the MenuBar:
+lo open. 
+```
 
+
+
+To test the Menu class:
+
+```smalltalk
 m := Menu new.
+
 m topMenuTest.
+```
+
