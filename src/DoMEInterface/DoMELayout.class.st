@@ -25,10 +25,10 @@ DoMELayout >> initializePresenters [
 	self intializeTopToolbar.
 	
 	presenter := SpBoxLayout newTopToBottom   
-		add: topToolbar 
-		expand: false;
 		add:menu
 		expand:false;
+		add: topToolbar 
+		expand: false;
 	yourself.
 ]
 
