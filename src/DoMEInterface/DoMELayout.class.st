@@ -38,14 +38,21 @@ DoMELayout >> intializeMenu [
 	"comment stating purpose of instance-side method"
 	"scope: class-variables  &  instance-variables"	
 			
-	menu := self newMenuBar   
+	menu := SpBoxLayout newLeftToRight   
+		add:Menu new addFileButton; 
+		add:Menu new addEditButton;
+		"expand:false;"
+	yourself.
+	
+	"menu := self newMenuBar   
 		addItem:(
 			Menu new addEditButton;
 			yourself);
 		addItem:(
 			Menu new addFileButton;
 		yourself);
-	yourself.
+	yourself."
+
 	
 
 ]
