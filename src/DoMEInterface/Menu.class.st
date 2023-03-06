@@ -10,7 +10,7 @@ Menu >> addEditButton [
 	"scope: class-variables  &  instance-variables"	
 			
 	|button|		
-	button := self newButton
+	button := self newButton 
 		label: 'edit';
 		contextMenu: self addEditSubMenu;
 		yourself.
