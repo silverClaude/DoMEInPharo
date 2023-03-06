@@ -2,6 +2,7 @@ Class {
 	#name : #DoMELayout,
 	#superclass : #SpPresenter,
 	#instVars : [
+		'presenter',
 		'menu',
 		'topToolbar',
 		'leftToolbar'
@@ -12,25 +13,23 @@ Class {
 { #category : #'as yet unclassified' }
 DoMELayout >> defaultLayout [
 	
-	self intializeMenu .
-
-	^ SpBoxLayout newTopToBottom
-		add:menu;
-		"expand: false;"
-		yourself.
+	^ presenter 
 ]
 
 { #category : #'as yet unclassified' }
 DoMELayout >> initializePresenters [ 
 
-"	| largeLayout |
 	super initializePresenters.
-
-	largeLayout := SpBoxLayout newTopToBottom.
 	
+	self intializeMenu .
+	self intializeTopToolbar.
 	
-	self addFieldTo: largeLayout.
-"
+	presenter := SpBoxLayout newTopToBottom   
+		add: topToolbar 
+		expand: false;
+		add:menu
+		expand:false;
+	yourself.
 ]
 
 { #category : #'as yet unclassified' }
@@ -38,21 +37,20 @@ DoMELayout >> intializeMenu [
 	"comment stating purpose of instance-side method"
 	"scope: class-variables  &  instance-variables"	
 			
-	menu := SpBoxLayout newLeftToRight   
-		add:Menu new addFileButton; 
-		add:Menu new addEditButton;
-		"expand:false;"
-	yourself.
-	
-	"menu := self newMenuBar   
-		addItem:(
-			Menu new addEditButton;
-			yourself);
-		addItem:(
-			Menu new addFileButton;
-		yourself);
-	yourself."
+	menu := Menu new addTopMenu.
+
+
 
 	
+
+]
+
+{ #category : #'as yet unclassified' }
+DoMELayout >> intializeTopToolbar [
+	"comment stating purpose of instance-side method"
+	"scope: class-variables  &  instance-variables"	
+			
+	topToolbar := TopToolbar new topToolBar.
+
 
 ]

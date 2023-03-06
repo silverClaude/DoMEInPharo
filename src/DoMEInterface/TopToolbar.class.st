@@ -1,11 +1,11 @@
 Class {
-	#name : #XingqingTest,
+	#name : #TopToolbar,
 	#superclass : #SpPresenter,
 	#category : #DoMEInterface
 }
 
 { #category : #layout }
-XingqingTest >> defaultLayout [ 
+TopToolbar >> defaultLayout [ 
 	"comment stating purpose of instance-side method"
 	"scope: class-variables  &  instance-variables"	
 
@@ -15,7 +15,7 @@ XingqingTest >> defaultLayout [
 ]
 
 { #category : #'as yet unclassified' }
-XingqingTest >> topToolBar [ 
+TopToolbar >> topToolBar [ 
 	"comment stating purpose of instance-side method"
 	"scope: class-variables  &  instance-variables"	
 			
