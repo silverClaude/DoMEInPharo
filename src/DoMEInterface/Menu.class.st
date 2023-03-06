@@ -5,19 +5,6 @@ Class {
 }
 
 { #category : #adding }
-Menu >> addEditButton [
-	"comment stating purpose of instance-side method"
-	"scope: class-variables  &  instance-variables"	
-			
-	|button|		
-	button := self newButton
-		label: 'edit';
-		contextMenu: self addEditSubMenu;
-		yourself.
-	^button 
-]
-
-{ #category : #adding }
 Menu >> addEditSubMenu [
 	"comment stating purpose of instance-side method"
 	"scope: class-variables  &  instance-variables"	
@@ -77,18 +64,6 @@ Menu >> addEditSubMenu [
 ]
 
 { #category : #adding }
-Menu >> addFileButton [
-	"comment stating purpose of instance-side method"
-	"scope: class-variables  &  instance-variables"	
-	|button|		
-	button := self newButton
-		label: 'file';
-		contextMenu: self addFileSubMenu;
-		yourself.
-	^button 
-]
-
-{ #category : #adding }
 Menu >> addFileSubMenu [
 	"comment stating purpose of instance-side method"
 	"scope: class-variables  &  instance-variables"	
@@ -141,16 +116,37 @@ Menu >> addFileSubMenu [
 		yourself
 ]
 
+{ #category : #adding }
+Menu >> addTopMenu [
+	"comment stating purpose of instance-side method"
+	"scope: class-variables  &  instance-variables"	
+	|topMenu|
+	topMenu := self newMenuBar. 
+		
+		topMenu addGroup: [ :group | group 
+			addItem: [ :item | item 
+				name: 'File';
+				subMenu: self addFileSubMenu ] ;
+		   addItem: [ :item | item 
+				name: 'Edit';
+				subMenu: self addEditSubMenu ] ].
+		
+		^topMenu
+		
+		
+]
+
 { #category : #testing }
 Menu >> topMenuTest [
 	"comment stating purpose of instance-side method"
 	"scope: class-variables  &  instance-variables"	
-	|presenter|
-   presenter := SpPresenter new.
-   "Optionally, define an application for the presenter"
-   presenter application: SpApplication new.
-   presenter layout: SpPanedLayout newTopToBottom.
-   presenter open.
-   presenter layout add: self addFileButton .
-   presenter layout add: self addEditButton .
+	|presenter topIcon|
+	topIcon := XingqingTest new.
+	(presenter := SpPresenter new)
+   layout: (SpBoxLayout newTopToBottom 
+   add: (self addTopMenu) expand: false;
+   "add: (topIcon topToolBar) expand: false;"
+   yourself).
+	presenter open.
+	
 ]
