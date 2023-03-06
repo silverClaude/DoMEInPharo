@@ -2,6 +2,7 @@ Class {
 	#name : #DoMELayout,
 	#superclass : #SpPresenter,
 	#instVars : [
+		'window',
 		'presenter',
 		'menu',
 		'topToolbar',
@@ -13,14 +14,17 @@ Class {
 { #category : #'as yet unclassified' }
 DoMELayout >> defaultLayout [
 	
-	^ presenter 
+
+	"self initializeWindow: window."
+	
+	^ window 
+
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #initialization }
 DoMELayout >> initializePresenters [ 
 
-	super initializePresenters.
-	
+
 	self intializeMenu .
 	self intializeTopToolbar.
 	
@@ -31,10 +35,48 @@ DoMELayout >> initializePresenters [
 		add: topToolbar 
 		"expand: false"
 		height:20;
+		add: self intializeLeftToolbarAndCanvas ;"need change"
 	yourself.
 ]
 
+{ #category : #initialization }
+DoMELayout >> initializeTitle: aString [
+	"comment stating purpose of instance-side method"
+	"scope: class-variables  &  instance-variables"	
+			
+	^aString
+]
+
+{ #category : #initialization }
+DoMELayout >> initializeWindow: aWindowPresenter [
+	"comment stating purpose of instance-side method"
+	"scope: class-variables  &  instance-variables"	
+
+		
+		aWindowPresenter
+		title: 'DoME';
+		initialExtent: "self initialExtent" 800@600;
+		windowIcon: self windowIcon;
+		openWithLayout: presenter.
+		
+		
+]
+
 { #category : #'as yet unclassified' }
+DoMELayout >> intializeLeftToolbarAndCanvas [
+	"comment stating purpose of instance-side method"
+	"scope: class-variables  &  instance-variables"	
+"	|canvas|
+	canvas := Canvas newCanvas ."
+	^SpBoxLayout  newLeftToRight 
+		add:menu width:20;
+"		add: canvas ;"
+	yourself.
+	
+	
+]
+
+{ #category : #initialization }
 DoMELayout >> intializeMenu [
 	"comment stating purpose of instance-side method"
 	"scope: class-variables  &  instance-variables"	
@@ -47,7 +89,7 @@ DoMELayout >> intializeMenu [
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #initialization }
 DoMELayout >> intializeTopToolbar [
 	"comment stating purpose of instance-side method"
 	"scope: class-variables  &  instance-variables"	

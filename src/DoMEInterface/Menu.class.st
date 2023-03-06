@@ -141,7 +141,7 @@ Menu >> topMenuTest [
 	"comment stating purpose of instance-side method"
 	"scope: class-variables  &  instance-variables"	
 	|presenter topIcon|
-	topIcon := XingqingTest new.
+	topIcon := TopToolbar new.
 	(presenter := SpPresenter new)
    layout: (SpBoxLayout newTopToBottom 
    add: (self addTopMenu) expand: false;
