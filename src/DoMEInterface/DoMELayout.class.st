@@ -71,8 +71,8 @@ DoMELayout >> intializeLeftToolbarAndCanvas [
 	canvas := Canvas newCanvas ."
 	leftToolbar := LeftToolbar  new.
 	^SpBoxLayout  newLeftToRight 
-		add: leftToolbar width:200;
-"		add: canvas ;"
+		add: leftToolbar width:50;
+		add: SpTextPresenter new ;
 	yourself.
 	
 	
