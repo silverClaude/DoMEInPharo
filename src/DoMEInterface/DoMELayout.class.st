@@ -17,7 +17,7 @@ DoMELayout >> defaultLayout [
 
 	"self initializeWindow: window."
 	
-	^ window 
+	^ presenter 
 
 ]
 
@@ -52,12 +52,13 @@ DoMELayout >> initializeWindow: aWindowPresenter [
 	"comment stating purpose of instance-side method"
 	"scope: class-variables  &  instance-variables"	
 
-		
+		super 	initializeWindow: aWindowPresenter.
+			
 		aWindowPresenter
 		title: 'DoME';
 		initialExtent: "self initialExtent" 800@600;
-		windowIcon: self windowIcon;
-		openWithLayout: presenter.
+		windowIcon: self windowIcon.
+		"openWithLayout: presenter."
 		
 		
 ]
