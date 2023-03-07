@@ -102,3 +102,17 @@ DoMESpecification >> initializePresenters [
 	scrollablePresenter layout: largeLayout
 
 ]
+
+{ #category : #adding }
+DoMESpecification >> initializeWindow: aWindowPresenter [
+	"comment stating purpose of instance-side method"
+	"scope: class-variables  &  instance-variables"	
+
+		super 	initializeWindow: aWindowPresenter.
+			
+		aWindowPresenter
+		title: '';
+		initialExtent: self initialExtent;
+		windowIcon: self windowIcon.
+
+]
