@@ -14,7 +14,7 @@ ds open.
 
 To test the DoMELayout class:
 
-```
+```smalltalk
 lo := DoMELayout new.
 
 lo open. 
@@ -25,16 +25,26 @@ lo open.
 To test the Menu class:
 
 ```smalltalk
-m := Menu new.
+mn := Menu new.
 
-m topMenuTest.
+mn topMenuTest.
 ```
 
 
-To test the TopToolbar
+
+To test the TopToolbar:
 
 ```smalltalk
-x := TopToolbar new.
+ttb := TopToolbar new.
 
-x open.
+ttb open.
 ```
+
+To test the LeftToolbar:
+
+```smalltalk
+ltb := LeftToolbar new.
+
+ltb open.
+```
+
