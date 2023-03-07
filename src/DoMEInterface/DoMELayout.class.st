@@ -2,11 +2,11 @@ Class {
 	#name : #DoMELayout,
 	#superclass : #SpPresenter,
 	#instVars : [
-		'window',
 		'presenter',
 		'menu',
 		'topToolbar',
-		'leftToolbar'
+		'leftToolbar',
+		'canvas'
 	],
 	#category : #DoMEInterface
 }
@@ -19,6 +19,17 @@ DoMELayout >> defaultLayout [
 	
 	^ presenter 
 
+]
+
+{ #category : #'as yet unclassified' }
+DoMELayout >> initializeCanvas [
+	|canvasWithoutScrollbar|
+	canvasWithoutScrollbar := SpBoxLayout newTopToBottom .
+	canvasWithoutScrollbar add:SpTextPresenter new .
+	
+	^SpScrollableLayout with: canvasWithoutScrollbar  
+	
+	
 ]
 
 { #category : #initialization }
@@ -35,7 +46,7 @@ DoMELayout >> initializePresenters [
 		add: topToolbar 
 		"expand: false"
 		height:20;
-		add: self intializeLeftToolbarAndCanvas ;"need change"
+		add: self intializeMainLayout ;"need change"
 	yourself.
 ]
 
@@ -64,15 +75,16 @@ DoMELayout >> initializeWindow: aWindowPresenter [
 ]
 
 { #category : #'as yet unclassified' }
-DoMELayout >> intializeLeftToolbarAndCanvas [
+DoMELayout >> intializeMainLayout [
 	"comment stating purpose of instance-side method"
 	"scope: class-variables  &  instance-variables"	
 "	|canvas|
 	canvas := Canvas newCanvas ."
-	leftToolbar := LeftToolbar  new.
+	leftToolbar := LeftToolbar new.
+	canvas := self initializeCanvas .
 	^SpBoxLayout  newLeftToRight 
 		add: leftToolbar width:50;
-		add: SpTextPresenter new ;
+		add: canvas ;
 	yourself.
 	
 	
