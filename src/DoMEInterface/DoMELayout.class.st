@@ -69,8 +69,9 @@ DoMELayout >> intializeLeftToolbarAndCanvas [
 	"scope: class-variables  &  instance-variables"	
 "	|canvas|
 	canvas := Canvas newCanvas ."
+	leftToolbar := LeftToolbar  new.
 	^SpBoxLayout  newLeftToRight 
-		add:menu width:20;
+		add: leftToolbar width:200;
 "		add: canvas ;"
 	yourself.
 	
