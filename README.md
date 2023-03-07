@@ -30,3 +30,11 @@ m := Menu new.
 m topMenuTest.
 ```
 
+
+To test the TopToolbar
+
+```smalltalk
+x := TopToolbar new.
+
+x open.
+```
