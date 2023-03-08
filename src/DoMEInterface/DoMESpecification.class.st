@@ -2,6 +2,7 @@ Class {
 	#name : #DoMESpecification,
 	#superclass : #SpPresenter,
 	#instVars : [
+		'window',
 		'scrollablePresenter',
 		'list',
 		'actionBar',
@@ -61,13 +62,15 @@ DoMESpecification >> initializeActionBar [
 			icon: (self iconNamed: #smallOk);
 			help: 'OK.';
 			action: [ "UIManager default defer: [ self inform: 'New canvas' ];"
-				DoMELayout new open. ];
+				DoMELayout new open.
+				window close.];
 			yourself);
 		add: (self newButton
 			label: 'Cancel'; 
 			icon: (self iconNamed: #smallCancel);
 			help: 'Cancel.';
-			action: [ UIManager default defer: [ self inform: 'Cancel' ] ];
+			action: [ "UIManager default defer: [ self inform: 'Cancel' ] "
+				window close.];
 			yourself);
 		yourself.
 ]
@@ -116,5 +119,6 @@ DoMESpecification >> initializeWindow: aWindowPresenter [
 		initialExtent: self initialExtent;
 		windowIcon: self windowIcon;
 		centered.
+		window := aWindowPresenter .
 
 ]
