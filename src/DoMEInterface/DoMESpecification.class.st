@@ -62,8 +62,13 @@ DoMESpecification >> initializeActionBar [
 			icon: (self iconNamed: #smallOk);
 			help: 'OK.';
 			action: [ "UIManager default defer: [ self inform: 'New canvas' ];"
-				DoMELayout new open.
-				window close.];
+				model 
+					ifNil:[UIManager default defer: [ self inform: 'Please select a model first!' ]]
+					ifNotNil:[
+						DoMELayout new open.
+						window close.
+						]
+				];
 			yourself);
 		add: (self newButton
 			label: 'Cancel'; 
@@ -81,7 +86,15 @@ DoMESpecification >> initializeList [
 	list := self newList.
 
 	list 
-		items: #('BPMN Diagram (BPMNGraph)' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' ).
+		items: #('BPMN Diagram (BPMNGraph)' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' );
+		whenSelectionChangedDo: 
+		[ :elem | 
+		model  := 
+			(elem
+				 ifNil: [ 'None' ]
+				 ifNotNil: [ elem asString ] 
+			)
+		] 
 
 ]
 
