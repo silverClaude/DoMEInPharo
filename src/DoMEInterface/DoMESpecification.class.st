@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'scrollablePresenter',
 		'list',
-		'actionBar'
+		'actionBar',
+		'model'
 	],
 	#category : #DoMEInterface
 }
@@ -113,6 +114,7 @@ DoMESpecification >> initializeWindow: aWindowPresenter [
 		aWindowPresenter
 		title: '';
 		initialExtent: self initialExtent;
-		windowIcon: self windowIcon.
+		windowIcon: self windowIcon;
+		centered.
 
 ]

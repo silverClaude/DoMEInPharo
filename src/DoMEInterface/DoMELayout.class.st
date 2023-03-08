@@ -68,7 +68,8 @@ DoMELayout >> initializeWindow: aWindowPresenter [
 		aWindowPresenter
 		title: 'DoME';
 		initialExtent: "self initialExtent" 800@600;
-		windowIcon: self windowIcon.
+		windowIcon: self windowIcon;
+		centered.
 		"openWithLayout: presenter."
 		
 		
