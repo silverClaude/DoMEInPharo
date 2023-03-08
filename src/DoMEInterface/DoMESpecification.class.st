@@ -54,7 +54,8 @@ DoMESpecification >> defaultLayout [
 { #category : #initialization }
 DoMESpecification >> initializeActionBar [
 	"comment stating purpose of instance-side method"
-	"scope: class-variables  &  instance-variables"	
+	"scope: class-variables  &  instance-variables"
+	|domeLayout|	
 
 	actionBar := self newActionBar
 		add: (self newButton
@@ -65,7 +66,9 @@ DoMESpecification >> initializeActionBar [
 				model 
 					ifNil:[UIManager default defer: [ self inform: 'Please select a model first!' ]]
 					ifNotNil:[
-						DoMELayout new open.
+						"UIManager default defer: [ self inform:model].""for test"
+						domeLayout  := DoMELayout newModel: model.
+						domeLayout open.
 						window close.
 						]
 				];
@@ -88,13 +91,12 @@ DoMESpecification >> initializeList [
 	list 
 		items: #('BPMN Diagram (BPMNGraph)' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' '2' );
 		whenSelectionChangedDo: 
-		[ :elem | 
-		model  := 
-			(elem
-				 ifNil: [ 'None' ]
-				 ifNotNil: [ elem asString ] 
-			)
+		[ :selection | 
+		model  := selection selectedItem asString .
 		] 
+			
+		
+
 
 ]
 
