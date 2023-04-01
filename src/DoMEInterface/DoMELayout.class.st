@@ -14,12 +14,21 @@ Class {
 	#category : #DoMEInterface
 }
 
+{ #category : #accessing }
+DoMELayout class >> model: aString [
+	"comment stating purpose of class-side method"
+	"scope: class-variables  &  class-instance-variables"	
+			
+	model := aString
+]
+
 { #category : #'instance creation' }
 DoMELayout class >> newModel: aString [
 	"comment stating purpose of class-side method"
 	"scope: class-variables  &  class-instance-variables"	
 			
-	 ^self new model:aString
+	self model:aString.
+	^self new 
 ]
 
 { #category : #'as yet unclassified' }
@@ -86,7 +95,9 @@ DoMELayout >> initializePresenters [
 	self initializeMenu .
 	self initializeTopToolbar.
 	
-	"Transcript show: model ."
+"	Transcript open.
+	Transcript show: '  :  '.
+	Transcript show: model ."
 	mainLayout := self initializeMainLayout:model.
 	presenter := SpBoxLayout newTopToBottom   
 		add:menu
@@ -151,13 +162,10 @@ DoMELayout >> intializeMainLayout [
 	
 ]
 
-{ #category : #initialization }
-DoMELayout >> model: aString [
-
+{ #category : #accessing }
+DoMELayout >> presenter [
 	"comment stating purpose of instance-side method"
-
-	"scope: class-variables  &  instance-variables"
-
-	model := aString.
-
+	"scope: class-variables  &  instance-variables"	
+			
+	^presenter 
 ]

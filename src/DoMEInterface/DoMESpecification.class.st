@@ -55,7 +55,7 @@ DoMESpecification >> defaultLayout [
 DoMESpecification >> initializeActionBar [
 	"comment stating purpose of instance-side method"
 	"scope: class-variables  &  instance-variables"
-	|domeLayout|	
+	|domeLayout domeApp|	
 
 	actionBar := self newActionBar
 		add: (self newButton
@@ -69,6 +69,9 @@ DoMESpecification >> initializeActionBar [
 						"UIManager default defer: [ self inform:model].""for test"
 						domeLayout  := DoMELayout newModel: model.
 						domeLayout open.
+						"domeApp := DoMEApplication new.
+						domeApp newPresenter: domeLayout.
+						domeApp run."
 						window close.
 						]
 				];
